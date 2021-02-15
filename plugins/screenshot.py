@@ -5,7 +5,7 @@ from pyrogram.raw import functions
 from pyrogram.types import Message
 
 from userge import userge
-from userge.utils import add_command_help
+from userge.custom import add_command_help
 
 
 @userge.on_message(
