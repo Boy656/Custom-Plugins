@@ -4,21 +4,21 @@ from pyrogram import filters
 from pyrogram.raw import functions
 from pyrogram.types import Message
 
-from userbot import UserBot
-from userbot.plugins.help import add_command_help
+from userge import userge
+from userge.plugins.help import add_command_help
 
 
-@UserBot.on_message(
+@userge.on_message(
     filters.command(["screenshot", "ss"], ".") & filters.private & filters.me
 )
 async def screenshot(_, message: Message):
     await asyncio.gather(
         message.delete(),
-        UserBot.send(
+        userge.send(
             functions.messages.SendScreenshotNotification(
-                peer=await UserBot.resolve_peer(message.chat.id),
+                peer=await userge.resolve_peer(message.chat.id),
                 reply_to_msg_id=0,
-                random_id=UserBot.rnd_id(),
+                random_id=userge.rnd_id(),
             )
         ),
     )
